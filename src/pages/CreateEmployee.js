@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
 import DatePicker from '../components/DatePiker/DatePicker'
+import SelectMenu from '../components/SelectMenu/SelectMenu'
+import { states } from '../constants/states'
+import { departments } from '../constants/departments'
 
 const CreateEmployee = () => {
   return (
@@ -33,20 +36,14 @@ const CreateEmployee = () => {
             <input id="city" type="text" />
 
             <label htmlFor="state">State</label>
-            <select name="state" id="state"></select>
+            <SelectMenu options={states} />
 
             <label htmlFor="zip-code">Zip Code</label>
             <input id="zip-code" type="number" />
           </fieldset>
 
           <label htmlFor="department">Department</label>
-          <select name="department" id="department">
-            <option>Sales</option>
-            <option>Marketing</option>
-            <option>Engineering</option>
-            <option>Human Resources</option>
-            <option>Legal</option>
-          </select>
+          <SelectMenu options={departments} />
         </form>
         <button>Save</button>
       </div>
