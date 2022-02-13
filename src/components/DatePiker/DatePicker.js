@@ -7,7 +7,6 @@ const DatePicker = () => {
   const [selectedDate, setSelectedDate] = useState(null)
 
   const handleDateChange = (selectedDate) => {
-    console.log(selectedDate.getTime())
     setSelectedDate(selectedDate)
   }
 
@@ -15,9 +14,10 @@ const DatePicker = () => {
     <Datepicker
       selected={selectedDate}
       onChange={handleDateChange}
-      scrollableYearDropdown
+      todayButton="Today Date"
       showMonthDropdown
       showYearDropdown
+      dropdownMode="select"
     />
   )
 }
