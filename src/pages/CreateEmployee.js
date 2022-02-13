@@ -36,8 +36,13 @@ const CreateEmployee = () => {
             <input id="city" type="text" />
 
             <label htmlFor="state">State</label>
-            <SelectMenu options={states} />
-
+            <SelectMenu
+              options={states.map((state) => ({
+                ...state,
+                label: state.name,
+                value: state.abbreviation,
+              }))}
+            />
             <label htmlFor="zip-code">Zip Code</label>
             <input id="zip-code" type="number" />
           </fieldset>
