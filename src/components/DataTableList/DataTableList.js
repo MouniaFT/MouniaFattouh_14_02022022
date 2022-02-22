@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { dataTableTitle } from '../../constants/dataTableTitle'
+import { EmployeeListContext } from '../../contexts/EmployeeListContext'
 
 const data = [
   {
@@ -21,6 +22,8 @@ const DataTableList = () => {
   const [pending, setPending] = useState(true)
   const [rows, setRows] = useState([])
   const [search, setSearch] = useState('')
+  const { employeeList, setEmployeeList } = useContext(EmployeeListContext)
+  console.log(employeeList)
 
   useEffect(() => {
     const timeout = setTimeout(() => {
