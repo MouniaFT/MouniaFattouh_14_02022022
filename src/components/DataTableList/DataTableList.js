@@ -5,7 +5,6 @@ import { EmployeeListContext } from '../../contexts/EmployeeListContext'
 
 const data = [
   {
-    id: 1,
     firstName: 'mounia',
     lastName: 'fattouh',
     startDate: '12/12/2017',
@@ -23,7 +22,6 @@ const DataTableList = () => {
   const [rows, setRows] = useState([])
   const [search, setSearch] = useState('')
   const { employeeList, setEmployeeList } = useContext(EmployeeListContext)
-  console.log(employeeList)
 
   useEffect(() => {
     const timeout = setTimeout(() => {

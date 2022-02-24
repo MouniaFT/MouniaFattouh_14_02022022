@@ -1,20 +1,14 @@
-import { useState } from 'react'
 import Datepicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import '../DatePiker/DatePicker.css'
 
-const DatePicker = () => {
-  const [selectedDate, setSelectedDate] = useState(null)
-
-  const handleDateChange = (selectedDate) => {
-    setSelectedDate(selectedDate)
-  }
-
+const DatePicker = ({ onChange, selected }) => {
   return (
     <Datepicker
-      selected={selectedDate}
-      onChange={handleDateChange}
+      selected={selected}
+      onChange={onChange}
       todayButton="Today Date"
+      dateFormat="yyyy/MM/dd"
       showMonthDropdown
       showYearDropdown
       dropdownMode="select"
