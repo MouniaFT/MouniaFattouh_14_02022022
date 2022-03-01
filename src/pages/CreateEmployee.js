@@ -4,8 +4,10 @@ import SelectMenu from '../components/SelectMenu/SelectMenu'
 import { states } from '../constants/states'
 import { departments } from '../constants/departments'
 import { EmployeeListContext } from '../contexts/EmployeeListContext'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import Modal from 'mm-simple-modal'
+import 'mm-simple-modal/dist/index.css'
 
 const CreateEmployee = () => {
   const { employeeList, setEmployeeList } = useContext(EmployeeListContext)
@@ -16,12 +18,19 @@ const CreateEmployee = () => {
     formState: { errors },
     reset,
   } = useForm()
+  const [showModal, setShowModal] = useState(false)
+
+  const closeModal = () => {
+    showModal && setShowModal(false)
+    reset()
+    history.push('/employee')
+  }
 
   const history = useHistory()
   const onSubmit = (data) => {
+    console.log(data)
     setEmployeeList(employeeList.push(data))
-    reset()
-    history.push('/employee')
+    setShowModal(true)
   }
 
   return (
@@ -156,10 +165,10 @@ const CreateEmployee = () => {
           )}
 
           <button>Save</button>
+          <Modal show={showModal} onCloseModal={closeModal}>
+            Employee Created!
+          </Modal>
         </form>
-      </div>
-      <div id="confirmation" className="modal">
-        Employee Created!
       </div>
     </main>
   )
