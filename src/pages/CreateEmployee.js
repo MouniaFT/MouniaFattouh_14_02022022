@@ -8,6 +8,7 @@ import { useContext, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import Modal from 'mm-simple-modal'
 import 'mm-simple-modal/dist/index.css'
+import './CreateEmployee.css'
 
 const CreateEmployee = () => {
   const { employeeList, setEmployeeList } = useContext(EmployeeListContext)
@@ -39,14 +40,18 @@ const CreateEmployee = () => {
   }
 
   return (
-    <main>
+    <main className="main-createemployee">
       <div className="title">
         <h1>HRnet</h1>
       </div>
       <div className="container">
         <Link to="/employee">View Current Employees</Link>
         <h2>Create Employee</h2>
-        <form onSubmit={handleSubmit(onSubmit)} id="create-employee">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          id="create-employee"
+          className="create-employee"
+        >
           <label htmlFor="first-name">First Name</label>
           <input
             type="text"
@@ -169,7 +174,7 @@ const CreateEmployee = () => {
             <p className="errormessage">Please check the Department</p>
           )}
 
-          <button>Save</button>
+          <button className="btn-save">Save</button>
           <Modal show={showModal} onCloseModal={closeModal}>
             Employee Created!
           </Modal>
