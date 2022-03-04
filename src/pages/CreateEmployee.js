@@ -28,8 +28,13 @@ const CreateEmployee = () => {
 
   const history = useHistory()
   const onSubmit = (data) => {
-    console.log(data)
-    setEmployeeList(employeeList.push(data))
+    // Formats data
+    data.dateOfBirth = data.dateOfBirth.toLocaleDateString('en-US')
+    data.startDate = data.startDate.toLocaleDateString('en-US')
+    data.state = data.state.label
+    data.department = data.department.label
+
+    setEmployeeList([...employeeList, { ...data }])
     setShowModal(true)
   }
 

@@ -3,20 +3,6 @@ import DataTable from 'react-data-table-component'
 import { dataTableTitle } from '../../constants/dataTableTitle'
 import { EmployeeListContext } from '../../contexts/EmployeeListContext'
 
-const data = [
-  {
-    firstName: 'mounia',
-    lastName: 'fattouh',
-    startDate: '12/12/2017',
-    department: 'Marketing',
-    dateOfBirth: '24/05/1990',
-    street: '12 RUE ',
-    city: '',
-    state: 'california',
-    zipCode: '12354',
-  },
-]
-
 const DataTableList = () => {
   const [pending, setPending] = useState(true)
   const [rows, setRows] = useState([])
@@ -25,16 +11,16 @@ const DataTableList = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setRows(data)
+      setRows(employeeList)
       setPending(false)
-    }, 2000)
+    }, 500)
     return () => clearTimeout(timeout)
-  }, [])
+  }, [employeeList])
 
   const handleSearch = (e) => {
     setSearch(e.target.value)
     setRows(
-      data.filter((row) =>
+      employeeList.filter((row) =>
         row.firstName.toLowerCase().includes(search.toLowerCase())
       )
     )
@@ -50,7 +36,7 @@ const DataTableList = () => {
       </div>
       <DataTable
         columns={dataTableTitle}
-        data={search ? rows : data}
+        data={search ? rows : employeeList}
         pagination
         fixedHeader
         fixedHeaderScrollHeight="400px"
