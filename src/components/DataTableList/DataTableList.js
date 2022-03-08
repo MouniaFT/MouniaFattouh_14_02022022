@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { dataTableTitle } from '../../constants/dataTableTitle'
 import { EmployeeListContext } from '../../contexts/EmployeeListContext'
+import './DataTableList.css'
 
 const DataTableList = () => {
   const [pending, setPending] = useState(true)
@@ -20,8 +21,17 @@ const DataTableList = () => {
   const handleSearch = (e) => {
     setSearch(e.target.value)
     setRows(
-      employeeList.filter((row) =>
-        row.firstName.toLowerCase().includes(search.toLowerCase())
+      employeeList.filter(
+        (row) =>
+          row.firstName.toLowerCase().includes(search.toLowerCase()) ||
+          row.lastName.toLowerCase().includes(search.toLowerCase()) ||
+          row.startDate.toLowerCase().includes(search.toLowerCase()) ||
+          row.department.toLowerCase().includes(search.toLowerCase()) ||
+          row.dateOfBirth.toLowerCase().includes(search.toLowerCase()) ||
+          row.state.toLowerCase().includes(search.toLowerCase()) ||
+          row.street.toLowerCase().includes(search.toLowerCase()) ||
+          row.zipCode.toLowerCase().includes(search.toLowerCase()) ||
+          row.city.toLowerCase().includes(search.toLowerCase())
       )
     )
   }
@@ -31,16 +41,27 @@ const DataTableList = () => {
       <div className="search">
         <label htmlFor="search">
           Search:
-          <input id="search" type="text" onChange={handleSearch} />
+          <input
+            className="search-input"
+            id="search"
+            type="text"
+            onChange={handleSearch}
+          />
         </label>
       </div>
       <DataTable
         columns={dataTableTitle}
         data={search ? rows : employeeList}
+        defaultSortFieldId={1}
         pagination
         fixedHeader
         fixedHeaderScrollHeight="400px"
         progressPending={pending}
+        noDataComponent={
+          <span className="search-message">
+            Sorry, there is no employees matching your search.
+          </span>
+        }
       />
     </>
   )
