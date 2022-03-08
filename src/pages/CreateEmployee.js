@@ -1,4 +1,4 @@
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import DatePicker from '../components/DatePiker/DatePicker'
 import SelectMenu from '../components/SelectMenu/SelectMenu'
 import { states } from '../constants/states'
@@ -24,10 +24,8 @@ const CreateEmployee = () => {
   const closeModal = () => {
     showModal && setShowModal(false)
     reset()
-    history.push('/employee')
   }
 
-  const history = useHistory()
   const onSubmit = (data) => {
     // Formats data
     data.dateOfBirth = data.dateOfBirth.toLocaleDateString('en-US')
