@@ -1,18 +1,18 @@
 import CreateEmployee from './pages/CreateEmployee'
 import './App.css'
 import EmployeeList from './pages/EmployeeList'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, HashRouter } from 'react-router-dom'
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <Route exact path="/">
         <CreateEmployee />
       </Route>
       <Route exact path="/employee">
         <EmployeeList />
       </Route>
-    </Router>
+    </HashRouter>
   )
 }
 
