@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/MouniaFattouh_14_02022022/static/css/main.86a663cc.css",
+    "main.js": "/MouniaFattouh_14_02022022/static/js/main.05979261.js",
+    "index.html": "/MouniaFattouh_14_02022022/index.html",
+    "main.86a663cc.css.map": "/MouniaFattouh_14_02022022/static/css/main.86a663cc.css.map",
+    "main.05979261.js.map": "/MouniaFattouh_14_02022022/static/js/main.05979261.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86a663cc.css",
+    "static/js/main.05979261.js"
+  ]
+}
