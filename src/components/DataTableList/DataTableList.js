@@ -4,12 +4,19 @@ import { dataTableTitle } from '../../constants/dataTableTitle'
 import { EmployeeListContext } from '../../contexts/EmployeeListContext'
 import './DataTableList.css'
 
+/**
+ * A component to display table of employees
+ * @returns { React.Component}
+ */
 const DataTableList = () => {
   const [pending, setPending] = useState(true)
   const [rows, setRows] = useState([])
   const [search, setSearch] = useState('')
+
+  // Use context to display employeeList in DataTable
   const { employeeList, setEmployeeList } = useContext(EmployeeListContext)
 
+  // Add Loading
   useEffect(() => {
     const timeout = setTimeout(() => {
       setRows(employeeList)
@@ -18,6 +25,7 @@ const DataTableList = () => {
     return () => clearTimeout(timeout)
   }, [employeeList])
 
+  // Filter employees
   const handleSearch = (e) => {
     setSearch(e.target.value)
     setRows(

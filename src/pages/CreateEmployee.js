@@ -10,8 +10,14 @@ import Modal from 'mm-simple-modal'
 import 'mm-simple-modal/dist/index.css'
 import './CreateEmployee.css'
 
+/**
+ * A component to display create employee page
+ * @returns { React.Component}
+ */
 const CreateEmployee = () => {
+  // Use context to save employee created in array employeeList
   const { employeeList, setEmployeeList } = useContext(EmployeeListContext)
+
   const {
     control,
     register,
@@ -19,13 +25,15 @@ const CreateEmployee = () => {
     formState: { errors },
     reset,
   } = useForm()
-  const [showModal, setShowModal] = useState(false)
 
+  // Close modal and remove input value
+  const [showModal, setShowModal] = useState(false)
   const closeModal = () => {
     showModal && setShowModal(false)
     reset()
   }
 
+  // Add to array (employeeList) data form formated and show modal after submit
   const onSubmit = (data) => {
     // Formats data
     data.dateOfBirth = data.dateOfBirth.toLocaleDateString('en-US')
